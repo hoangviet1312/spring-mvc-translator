@@ -10,8 +10,15 @@ import java.util.Map;
 
 @Controller
 public class Translator {
-
-
+    public Map getMap() {
+        Map<String, String> dictionary = new HashMap<>();
+        dictionary.put("hello", "xin chao");
+        dictionary.put("world", "the gioi");
+        dictionary.put("devlopment", "lap trinh vien");
+        dictionary.put("coffee", "ca phe");
+        dictionary.put("mad", "dien");
+        return dictionary;
+    }
     @GetMapping("/input")
     public String enterWord() {
         return "inputWord";
@@ -19,19 +26,14 @@ public class Translator {
 
     @GetMapping("/translate")
     public String resultSearch(@RequestParam String eng, Model model) {
-        Map<String, String> dictionary = new HashMap<>();
-        dictionary.put("hello", "xin chao");
-        dictionary.put("world", "the gioi");
-        dictionary.put("devlopment", "lap trinh vien");
-        dictionary.put("coffee", "ca phe");
-        dictionary.put("mad", "dien");
-
+        Map<String, String> map = getMap();
         String search = null;
-        for (String s : dictionary.keySet()) {
-            if (eng.equals(s)) {
-                search = dictionary.get(s);
+        for (String s : map.keySet()) {
+            if (eng.equalsIgnoreCase(s)) {
+                search = map.get(s);
+                break;
             } else {
-                search = "No result";
+                search = "Not found";
             }
         }
         model.addAttribute("search", search);

@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: hoangviet
@@ -9,17 +9,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-  <head>
+<head>
     <title>$Title$</title>
-  </head>
-  <body>
-  <c:if test='${search.equalsIgnoreCase("no result")}'>
+</head>
+<body>
+<c:if test='${search.equalsIgnoreCase("Not found")}'>
     <h2>
-        ${search} for: ${eng}
+            ${search} for: ${eng}
     </h2>
-  </c:if>
-  <c:if test='${search != "no result"}'>
+</c:if>
+<c:if test='${search != "Not found"}'>
     <h2>${eng} is mean: ${search}</h2>
-  </c:if>
-  </body>
+</c:if>
+</body>
 </html>
